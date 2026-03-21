@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: #f0f2f5;
+    overflow-x: hidden;
+}
+
+.flag-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; opacity: 0.12;
+}
+.saffron { background: #FF9933; height: 33.33vh; }
+.white { background: #FFFFFF; height: 33.33vh; }
+.green { background: #138808; height: 33.34vh; }
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #FF9933; color: white; padding: 10px 25px;
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; font-weight: bold; }
+
+.main-card {
+    max-width: 450px; margin: 30px auto;
+    background: white; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 20px; text-align: center;
+}
+
+.header-section { margin-bottom: 25px; }
+
+input {
+    width: 90%; padding: 12px; margin-top: 10px;
+    border: 1px solid #ddd; border-radius: 8px;
+}
+
+button {
+    width: 100%; padding: 14px; margin-top: 15px;
+    border-radius: 10px; border: none; font-weight: bold; cursor: pointer;
+}
+
+.primary-btn { background: #FF9933; color: white; }
+.upi-btn { background: #138808; color: white; font-size: 18px; }
+.success-btn { background: #28a745; color: white; }
+.hidden { display: none; }
+
+.menu-toggle { background: none; width: auto; color: white; font-size: 20px; display: none; }
+
+@media (max-width: 600px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+}
