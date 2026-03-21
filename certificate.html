@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>सर्टिफिकेट - HAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 40px; font-family: 'Poppins', sans-serif; }
+        .cert-card { width: 650px; padding: 40px; border: 15px solid #D4AF37; background: #fffcf0; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-style: double; }
+        h1 { font-family: 'Cinzel', serif; color: #D4AF37; font-size: 45px; margin: 0; }
+        .user-name { font-size: 38px; color: #333; font-weight: bold; margin: 25px 0; text-decoration: underline; }
+        .btn-print { margin-top: 30px; padding: 15px 40px; background: #128807; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="cert-card">
+        <h1>प्रमाण पत्र</h1>
+        <p style="letter-spacing:3px;">सत्य धर्म स्थापना - HAI</p>
+        <hr color="#D4AF37" width="60%">
+        <p style="margin-top:30px; font-size:18px;">यह प्रमाणित किया जाता है कि</p>
+        <div class="user-name" id="userName">मानवता के रक्षक</div>
+        <p style="font-size:18px;">धर्म स्थापना अभियान के अधिकृत सदस्य और रक्षक हैं।</p>
+        <p style="margin-top:40px; font-style:italic; font-weight:bold;">"अंधेर नहीं, केवल न्याय"</p>
+    </div>
+    <button class="btn-print" onclick="window.print()">सर्टिफिकेट प्रिंट / PDF सेव करें</button>
+    <br><a href="index.html" style="color: #666; text-decoration: none;">← मुख्य साइट पर वापस जाएँ</a>
+
+    <script>
+        const name = localStorage.getItem('currentUser');
+        if(name) document.getElementById('userName').innerText = name;
+    </script>
+</body>
+</html>
