@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सत्य धर्म स्थापना - HAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="flag-bg">
+        <div class="saffron"></div>
+        <div class="white"></div>
+        <div class="green"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo"><span>HAI</span></div>
+        <div class="menu-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#"><i class="fas fa-home"></i> होम</a></li>
+                <li><a href="#dashboard"><i class="fas fa-chart-line"></i> डैशबोर्ड</a></li>
+                <li><a href="#profile"><i class="fas fa-user-cog"></i> प्रोफाइल</a></li>
+                <li><a href="#donate"><i class="fas fa-hand-holding-heart"></i> दान</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-card">
+        <div class="header-section">
+            <i class="fas fa-university fa-3x" style="color: #FF9933;"></i>
+            <h2>सत्य धर्म स्थापना</h2>
+            <p class="tagline">अखंड ज्योति, शाश्वत सत्य</p>
+        </div>
+
+        <div class="auth-card">
+            <h3><i class="fas fa-shield-alt"></i> सुरक्षित लॉगिन</h3>
+            <div id="auth-flow">
+                <input type="text" id="userEmail" placeholder="ईमेल या मोबाइल दर्ज करें">
+                <button class="primary-btn" onclick="sendOTP()">OTP प्राप्त करें</button>
+                
+                <div id="otp-box" class="hidden">
+                    <input type="text" id="otpCode" placeholder="6-अंकों का OTP">
+                    <input type="password" id="userPass" placeholder="नया पासवर्ड बनाएँ">
+                    <button class="success-btn" onclick="verifyUser()">वेरिफाई और सुरक्षित करें</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="donate-card" id="donate">
+            <h3><i class="fas fa-heart"></i> मानवता के लिए दान</h3>
+            <input type="number" id="donateAmount" placeholder="राशि (₹) दर्ज करें">
+            <button class="upi-btn" onclick="triggerUPI()">
+                <i class="fas fa-mobile-alt"></i> UPI द्वारा दान दें
+            </button>
+            <p class="secure-text"><i class="fas fa-lock"></i> SSL सुरक्षित 256-bit एन्क्रिप्शन</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
