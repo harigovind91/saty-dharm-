@@ -10,39 +10,80 @@
         :root { --saffron: #FF9933; --white: #FFFFFF; --green: #128807; --space-dark: #0a0e17; --gold: #D4AF37; }
         body { font-family: 'Poppins', sans-serif; margin: 0; background: #f0f2f5; overflow-x: hidden; color: #333; }
 
-        /* --- Galaxy Flag --- */
+        /* --- Galaxy Flag Design with Floating Galaxies --- */
         .flag-container { text-align: center; padding: 20px; background: white; }
         .flag { width: 320px; height: 210px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; margin: 20px auto; display: flex; flex-direction: column; border-radius: 4px; overflow: hidden; animation: wave 4s infinite ease-in-out; }
         @keyframes wave { 0%, 100% { transform: perspective(1000px) rotateY(0deg); } 50% { transform: perspective(1000px) rotateY(10deg); } }
-        .stripe { height: 33.33%; width: 100%; position: relative; }
-        .saffron { background: var(--saffron); }
-        .white { background: var(--white); display: flex; justify-content: center; align-items: center; position: relative; }
-        .green { background: var(--green); }
-        .sky-background { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, #1e3a8a, var(--space-dark)); }
-        .galaxy-sun { width: 65px; height: 65px; background: radial-gradient(circle, #fff700 20%, #ff8800 50%, transparent 70%); border-radius: 50%; z-index: 2; box-shadow: 0 0 30px #ffcc00; }
+        .stripe { height: 33.33%; width: 100%; position: relative; overflow: hidden; }
+        .saffron { background: var(--saffron); z-index: 2; }
+        
+        /* सफेद पट्टी - ब्रह्मांड और आकाशगंगा */
+        .white { background: var(--white); display: flex; justify-content: center; align-items: center; position: relative; z-index: 1; }
+        
+        .sky-background { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, #1e3a8a, var(--space-dark)); z-index: 0; }
+        
+        .galaxy-sun { width: 65px; height: 65px; background: radial-gradient(circle, #fff700 20%, #ff8800 50%, transparent 70%); border-radius: 50%; position: relative; z-index: 2; box-shadow: 0 0 30px #ffcc00; }
 
-        /* --- Navigation --- */
+        /* तैरती हुई आकाशगंगाएं (Floating Galaxies) */
+        .white::before, .white::after, .moving-galaxy {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 10px rgba(135, 206, 235, 0.6); /* Sky blue glow */
+            animation: float-galaxy linear infinite;
+        }
+
+        /* बड़ी आकाशगंगा */
+        .white::before {
+            width: 80px; height: 40px;
+            top: 10%; left: -20%;
+            opacity: 0.3;
+            transform: rotate(-20deg);
+            animation-duration: 15s;
+        }
+
+        /* मध्यम आकाशगंगा */
+        .white::after {
+            width: 50px; height: 25px;
+            bottom: 10%; right: -15%;
+            opacity: 0.5;
+            transform: rotate(30deg);
+            animation-duration: 20s;
+            animation-delay: 5s;
+        }
+
+        /* छोटी और दूर की आकाशगंगा */
+        .moving-galaxy {
+            width: 30px; height: 15px;
+            top: 50%; left: 110%;
+            opacity: 0.4;
+            transform: rotate(10deg);
+            animation-duration: 25s;
+            animation-delay: 2s;
+        }
+
+        @keyframes float-galaxy {
+            0% { left: 110%; transform: translateX(0) rotate(10deg); }
+            100% { left: -120%; transform: translateX(-100px) rotate(10deg); }
+        }
+
+        .green { background: var(--green); z-index: 2; }
+
+        /* --- rest of the styling unchanged --- */
         .navbar { background: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #1a1a1a; overflow-x: hidden; transition: 0.4s; padding-top: 60px; }
         .sidenav a { padding: 15px 25px; text-decoration: none; font-size: 15px; color: #d1d1d1; display: block; border-bottom: 1px solid #2a2a2a; }
-
-        /* --- Content Layout --- */
         .main-card { max-width: 850px; margin: 20px auto; background: white; padding: 40px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); text-align: center; }
         .section-title { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 10px; }
         .quote-box { font-style: italic; border-left: 5px solid var(--saffron); padding: 20px; margin: 30px 0; background: #fffaf0; text-align: left; line-height: 1.6; }
-        
         .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; text-align: left; }
         .vision-item { padding: 20px; border-radius: 15px; background: #f9f9f9; border-top: 4px solid var(--green); }
-        
         .warning-section { background: #fff5f5; border: 2px dashed #ff4d4d; padding: 25px; border-radius: 20px; margin-top: 30px; text-align: left; }
         .identity-box { background: var(--space-dark); color: white; padding: 30px; border-radius: 20px; margin-top: 40px; font-size: 1.2rem; }
-
-        /* --- Donation Box --- */
         .donation-box { background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #eee; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .donation-box input { width: 80%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 18px; text-align: center; }
         .btn-upi { width: 100%; max-width: 350px; padding: 15px; background: #000; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; }
-
-        /* --- Modals --- */
         .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
         .modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 480px; position: relative; text-align: center; }
         video { width: 100%; border-radius: 10px; background: #000; margin: 15px 0; }
@@ -67,7 +108,10 @@
     <div class="flag-container">
         <div class="flag">
             <div class="stripe saffron"></div>
-            <div class="stripe white"><div class="sky-background"></div><div class="galaxy-sun"></div></div>
+            <div class="stripe white">
+                <div class="sky-background"></div>
+                <div class="moving-galaxy"></div> <div class="galaxy-sun"></div>
+            </div>
             <div class="stripe green"></div>
         </div>
         <h2 style="font-family:'Cinzel'; letter-spacing:2px;">सत्य धर्म स्थापना</h2>
@@ -137,6 +181,7 @@
     </div>
 
     <script>
+        // ... rest of the script unchanged ...
         function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
         function openModal(id) { document.getElementById(id).style.display = "flex"; closeNav(); }
@@ -181,5 +226,5 @@
         function takePhoto() { alert("फोटो सुरक्षित कर ली गई!"); closeModal('cameraModal'); }
     </script>
 </body>
-    </html>
-            
+        </html>
+    
