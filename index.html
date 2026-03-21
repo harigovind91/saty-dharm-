@@ -6,60 +6,65 @@
     <title>सत्य धर्म स्थापना - HAI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="flag-bg">
-        <div class="saffron"></div>
-        <div class="white"></div>
-        <div class="green"></div>
+    <div class="flag-wrapper">
+        <div class="layer saffron"></div>
+        <div class="layer white"></div>
+        <div class="layer green"></div>
     </div>
 
     <nav class="navbar">
         <div class="logo"><span>HAI</span></div>
-        <div class="menu-container">
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#"><i class="fas fa-home"></i> होम</a></li>
-                <li><a href="#dashboard"><i class="fas fa-chart-line"></i> डैशबोर्ड</a></li>
-                <li><a href="#profile"><i class="fas fa-user-cog"></i> प्रोफाइल</a></li>
-                <li><a href="#donate"><i class="fas fa-hand-holding-heart"></i> दान</a></li>
-            </ul>
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
+        <div class="nav-menu">
+            <a href="#"><i class="fas fa-home"></i> होम</a>
+            <a href="#donate" class="donate-shortcut">योगदान दें</a>
         </div>
     </nav>
 
-    <div class="main-card">
-        <div class="header-section">
-            <i class="fas fa-university fa-3x" style="color: #FF9933;"></i>
-            <h2>सत्य धर्म स्थापना</h2>
-            <p class="tagline">अखंड ज्योति, शाश्वत सत्य</p>
+    <div class="flag-container">
+        <div class="flag">
+            <div class="stripe saffron"></div>
+            <div class="stripe white">
+                <span class="flag-text">सत्य धर्म स्थापना</span>
+            </div>
+            <div class="stripe green"></div>
         </div>
+        <div class="pole"></div>
+    </div>
 
-        <div class="auth-card">
-            <h3><i class="fas fa-shield-alt"></i> सुरक्षित लॉगिन</h3>
-            <div id="auth-flow">
-                <input type="text" id="userEmail" placeholder="ईमेल या मोबाइल दर्ज करें">
-                <button class="primary-btn" onclick="sendOTP()">OTP प्राप्त करें</button>
-                
-                <div id="otp-box" class="hidden">
-                    <input type="text" id="otpCode" placeholder="6-अंकों का OTP">
-                    <input type="password" id="userPass" placeholder="नया पासवर्ड बनाएँ">
-                    <button class="success-btn" onclick="verifyUser()">वेरिफाई और सुरक्षित करें</button>
+    <div class="hero-container">
+        <div class="glass-card main-card">
+            <div class="brand-header">
+                <div class="icon-circle">
+                    <i class="fas fa-om"></i>
+                </div>
+                <h1>सत्य धर्म स्थापना</h1>
+                <p class="subtitle">अखंड ज्योति • शाश्वत सत्य • अनंत काल</p>
+            </div>
+
+            <div class="welcome-section">
+                <p>सत्य और धर्म के मार्ग पर आपका स्वागत है। मानवता की सेवा ही हमारा परम लक्ष्य है।</p>
+            </div>
+
+            <div class="donation-box" id="donate">
+                <h3>मानवता सेवा में योगदान</h3>
+                <div class="amount-input">
+                    <span class="currency">₹</span>
+                    <input type="number" id="donateAmount" placeholder="राशि दर्ज करें">
+                </div>
+                <button class="btn-upi" onclick="triggerUPI()">
+                    <i class="fab fa-google-pay"></i> UPI द्वारा दान दें
+                </button>
+                <div class="trust-badge">
+                    <i class="fas fa-lock"></i> सुरक्षित भुगतान: 43137160754@sbi
                 </div>
             </div>
-        </div>
-
-        <div class="donate-card" id="donate">
-            <h3><i class="fas fa-heart"></i> मानवता के लिए दान</h3>
-            <input type="number" id="donateAmount" placeholder="राशि (₹) दर्ज करें">
-            <button class="upi-btn" onclick="triggerUPI()">
-                <i class="fas fa-mobile-alt"></i> UPI द्वारा दान दें
-            </button>
-            <p class="secure-text"><i class="fas fa-lock"></i> SSL सुरक्षित 256-bit एन्क्रिप्शन</p>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html>
+            </html>
+            
