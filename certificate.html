@@ -2,39 +2,99 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Sovereign Certificate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Certificate - Satya Dharm</title>
     <style>
-        body { background: #222; display: flex; justify-content: center; padding: 20px; font-family: serif; }
-        .cert { width: 800px; padding: 40px; background: #fffcf0; border: 15px solid #D4AF37; position: relative; text-align: center; box-shadow: 0 0 40px #000; }
-        .photo { width: 120px; height: 140px; border: 2px solid #D4AF37; position: absolute; top: 40px; right: 40px; overflow: hidden; }
-        .photo img { width: 100%; height: 100%; object-fit: cover; }
-        h1 { color: #002366; font-size: 45px; margin: 10px; }
-        @media print { .btn-p { display: none; } }
+        :root { --gold: #D4AF37; --blue: #002366; }
+        body { background: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; font-family: 'serif'; }
+        
+        .cert-box { 
+            width: 850px; padding: 50px; background: #fffcf0; 
+            border: 20px solid var(--gold); position: relative; 
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); color: #222;
+        }
+
+        .photo-area { 
+            width: 130px; height: 160px; border: 3px solid var(--gold); 
+            position: absolute; top: 50px; right: 50px; overflow: hidden; background: #eee;
+        }
+        .photo-area img { width: 100%; height: 100%; object-fit: cover; }
+
+        .header h1 { color: var(--blue); font-size: 45px; margin: 0; }
+        .header h2 { color: #b8860b; letter-spacing: 8px; margin: 5px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding: 0 50px; }
+
+        .content { margin-top: 30px; text-align: left; font-size: 18px; line-height: 1.8; }
+        .data-line { border-bottom: 1px dotted #888; font-weight: bold; color: #000; padding: 0 10px; }
+
+        .footer { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .seal { font-size: 60px; filter: grayscale(1) opacity(0.2); position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); }
+
+        .btn-group { margin-top: 20px; display: flex; gap: 10px; }
+        .btn { padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; }
+
+        @media print { .btn-group { display: none; } body { background: none; padding: 0; } .cert-box { box-shadow: none; border: 10px solid var(--gold); } }
     </style>
 </head>
 <body>
-    <div class="cert">
-        <div class="photo"><img id="u-img" src=""></div>
-        <div style="font-size:50px;">☀️</div>
-        <h1>सत्य धर्म स्थापना</h1>
-        <h2 style="color:#b8860b; letter-spacing:10px;">प्रमाण पत्र</h2>
-        <p style="font-size:20px;">यह प्रमाणित किया जाता है कि वैश्विक नागरिक</p>
-        <div id="u-name" style="font-size:35px; font-weight:bold; border-bottom:2px double #D4AF37; display:inline-block; padding:0 30px;">---</div>
-        <p style="margin-top:30px;">इन्होंने मानवता की रक्षा और सत्य धर्म के मार्ग को स्वीकार किया है।</p>
-        <div style="margin-top:50px; display:flex; justify-content:space-around; font-weight:bold;">
-            <span>नोड आईडी: HAI-2026</span>
-            <span>तारीख: <span id="u-date"></span></span>
+
+    <div class="cert-box" id="capture">
+        <div class="photo-area"><img id="u-photo" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"></div>
+        <div class="seal">☀️</div>
+        
+        <div class="header" style="text-align: center;">
+            <div style="font-size: 40px;">☀️</div>
+            <h1>सत्य धर्म स्थापना</h1>
+            <p style="margin:0; font-weight:bold;">SATYA DHARM STHAPNA - GLOBAL NODE</p>
+            <h2>प्रमाण पत्र / CERTIFICATE</h2>
         </div>
-        <button class="btn-p" onclick="window.print()" style="margin-top:30px; padding:10px 30px; background:#D4AF37; border:none; cursor:pointer;">Print Certificate</button>
+
+        <div class="content">
+            <p>यह प्रमाणित किया जाता है कि / This is to certify that:</p>
+            <p>नाम / Name: <span class="data-line" id="v-name">----------</span></p>
+            <p>पिता का नाम / Father's Name: <span class="data-line" id="v-father">----------</span></p>
+            <p>पता / Address: <span class="data-line" id="v-address">----------</span>, PIN: <span class="data-line" id="v-pin">------</span></p>
+            <p>संपर्क / Contact: <span class="data-line" id="v-mobile">----------</span> | Email: <span class="data-line" id="v-email">----------</span></p>
+            
+            <p style="text-align: center; margin-top: 20px; font-style: italic;">
+                "इन्होंने मानवता की रक्षा और सत्य धर्म के वैश्विक मार्ग को स्वीकार किया है।" <br>
+                "Has accepted the path of Global Humanity and Satya Dharm."
+            </p>
+        </div>
+
+        <div class="footer">
+            <div style="text-align: left;">
+                <p>Node ID: <b>HAI-2026-<span id="v-id"></span></b></p>
+                <p>Date: <b id="v-date"></b></p>
+            </div>
+            <div style="text-align: center; border-top: 1px solid #000; padding-top: 5px;">
+                <p><b>हरिगोविंद सिंह चौहान</b><br><small>Founder & Scientist</small></p>
+            </div>
+        </div>
     </div>
+
+    <div class="btn-group">
+        <button class="btn" style="background: #D4AF37;" onclick="window.print()">Print / Download PDF</button>
+        <button class="btn" style="background: #444;" onclick="location.href='index.html'">Back to Home</button>
+    </div>
+
     <script>
         window.onload = () => {
-            const u = JSON.parse(localStorage.getItem('lastUser') || '{"name":"Citizen"}');
-            const p = localStorage.getItem('user_photo');
-            document.getElementById('u-name').innerText = u.name;
-            document.getElementById('u-date').innerText = new Date().toLocaleDateString();
-            if(p) document.getElementById('u-img').src = p;
+            const data = JSON.parse(localStorage.getItem('currentUser'));
+            const photo = localStorage.getItem('user_photo');
+
+            if(data) {
+                document.getElementById('v-name').innerText = data.name;
+                document.getElementById('v-father').innerText = data.father;
+                document.getElementById('v-address').innerText = data.address;
+                document.getElementById('v-pin').innerText = data.pin;
+                document.getElementById('v-mobile').innerText = data.mobile;
+                document.getElementById('v-email').innerText = data.email;
+                document.getElementById('v-id').innerText = data.mobile.substring(6); // मोबाइल के आखिरी 4 अंक ID के लिए
+                document.getElementById('v-date').innerText = new Date().toLocaleDateString();
+            }
+            if(photo) document.getElementById('u-photo').src = photo;
         };
     </script>
 </body>
-</html>
+    </html>
+            
