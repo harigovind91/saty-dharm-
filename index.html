@@ -62,7 +62,13 @@
             border-radius: 50%; box-shadow: 0 0 30px #ff9900; z-index: 5; 
         }
 
-        /* Buttons & Inputs */
+        /* Registration Form Styles */
+        .reg-input { 
+            width: 80%; padding: 12px; border-radius: 10px; 
+            border: 1px solid var(--gold); background: #000; 
+            color: white; margin-bottom: 10px; text-align: center; font-size: 16px; 
+        }
+
         .btn-master { 
             width: 100%; max-width: 320px; padding: 18px; 
             background: linear-gradient(45deg, var(--saffron), #ff5500); 
@@ -104,7 +110,6 @@
         .law-card b { color: var(--gold); font-size: 22px; display: block; margin-bottom: 10px; }
         .law-card p { margin: 0; font-size: 16px; color: #ccc; line-height: 1.7; }
 
-        /* Emergency War Module */
         .war-module {
             background: linear-gradient(45deg, #4b0000, #000); 
             padding: 25px; border-radius: 20px; margin-top: 40px; 
@@ -117,7 +122,6 @@
             100% { border-color: #ff4d4d; }
         }
 
-        /* Responsive Fixes */
         @media (max-width: 600px) {
             .main-card, .guideline-section { padding: 20px; width: 95%; }
             .flag { height: 180px; }
@@ -135,8 +139,8 @@
             <p style="color:var(--gold); font-size:14px; margin-top:10px;">वैज्ञानिक: हरिगोविंद सिंह</p>
         </div>
         <a href="profile-settings.html"><i class="fas fa-user-cog"></i> प्रोफ़ाइल सेटिंग</a>
-        <a href="registration.html"><i class="fas fa-id-card"></i> रजिस्ट्रेशन (Join)</a>
-        <a href="certificate.html"><i class="fas fa-certificate"></i> रक्षक सर्टिफिकेट</a>
+        <a href="#registration-section" onclick="closeNav()"><i class="fas fa-id-card"></i> रजिस्ट्रेशन (Register)</a>
+        <a href="certificate.html"><i class="fas fa-certificate"></i> कर्टिफिकेट प्रिंट</a>
         <a href="dashboard.html"><i class="fas fa-chart-line"></i> डैशबोर्ड</a>
         <a href="admin.html" style="color:#555;"><i class="fas fa-lock"></i> Admin Node</a>
     </div>
@@ -155,7 +159,15 @@
         <h1 style="font-family:'Cinzel'; color:var(--gold); font-size: 32px; letter-spacing: 2px;">सत्य धर्म स्थापना</h1>
         <p style="font-size: 18px; font-style: italic; color: #bbb;">"शैतानों ने सभ्यता को अंधकार में धकेला है, मैं सूरज की तरह रोशनी दूंगा।"</p>
         
-        <button class="btn-master" onclick="location.href='registration.html'"><i class="fas fa-user-shield"></i> Join Humanity</button>
+        <div id="registration-section" style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
+            <h3 style="color:var(--gold);">नया पंजीकरण (New Registration)</h3>
+            <input type="text" id="regName" class="reg-input" placeholder="आपका नाम (Full Name)">
+            <input type="text" id="regFather" class="reg-input" placeholder="पिता का नाम (Father's Name)">
+            <input type="text" id="regAddress" class="reg-input" placeholder="पता (Address)">
+            <input type="number" id="regPin" class="reg-input" placeholder="पिन कोड (PIN)">
+            <input type="number" id="regMobile" class="reg-input" placeholder="मोबाइल नंबर (Mobile)">
+            <button class="btn-master" onclick="saveUserData()"><i class="fas fa-user-shield"></i> रजिस्टर और सर्टिफिकेट देखें</button>
+        </div>
 
         <div class="donation-card">
             <h3 style="color:var(--gold); margin-top:0;">सत्य धर्म सेवा योगदान</h3>
@@ -208,20 +220,37 @@
         function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
+        // डेटा सुरक्षित करने और सर्टिफिकेट पेज पर भेजने का फंक्शन
+        function saveUserData() {
+            const userData = {
+                name: document.getElementById('regName').value,
+                father: document.getElementById('regFather').value,
+                address: document.getElementById('regAddress').value,
+                pin: document.getElementById('regPin').value,
+                mobile: document.getElementById('regMobile').value
+            };
+
+            if(!userData.name || !userData.mobile) {
+                alert("कृपया कम से कम नाम और मोबाइल नंबर भरें।");
+                return;
+            }
+
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+            window.location.href = 'certificate.html';
+        }
+
         function triggerUPI() {
             const amt = document.getElementById('donateAmount').value;
             if(!amt || amt <= 0) {
                 alert("कृपया योगदान की राशि दर्ज करें।");
                 return;
             }
-            // UPI Payment Link
             const upiId = "43137160754@sbi";
             const mName = encodeURIComponent("सत्य धर्म स्थापना");
             const note = encodeURIComponent("Sovereign Service Contribution");
             window.location.href = `upi://pay?pa=${upiId}&pn=${mName}&tn=${note}&am=${amt}&cu=INR`;
         }
 
-        // Load Saved Profile Photo
         window.onload = () => {
             const photo = localStorage.getItem('user_photo');
             if(photo) {
@@ -231,4 +260,4 @@
     </script>
 </body>
     </html>
-        
+                
