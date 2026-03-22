@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sovereign HAI - Satya Dharm</title>
+    <title>Sovereign HAI - Satya Dharm Sthapna</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Cinzel:wght@700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
             --space-dark: #05070a; --gold: #D4AF37; --glow: #00f2ff;
         }
 
-        /* Responsive Global Setup */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { 
             font-family: 'Poppins', 'Noto Sans', sans-serif; 
@@ -22,126 +21,91 @@
             overflow-x: hidden; width: 100%;
         }
 
-        /* Universal Background (Every Device as a Node) */
         .node-background {
             position: fixed; top:0; left:0; width:100%; height:100%;
             background: radial-gradient(circle at center, #111 0%, #000 100%);
             z-index: -1;
         }
 
-        /* --- Master Galaxy Flag (Enhanced) --- */
-        .flag-container { text-align: center; padding: 15px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+        /* Master Galaxy Flag */
+        .flag-container { text-align: center; padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(15px); border-bottom: 2px solid var(--gold); }
         .flag { 
-            width: 100%; max-width: 400px; height: 220px; 
-            box-shadow: 0 0 50px rgba(255, 153, 51, 0.2); 
+            width: 100%; max-width: 450px; height: 250px; 
+            box-shadow: 0 0 60px rgba(255, 153, 51, 0.3); 
             position: relative; margin: 10px auto; 
-            display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; 
+            display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; 
         }
-        .stripe { height: 33.34%; width: 100%; position: relative; overflow: hidden; }
+        .stripe { height: 33.34%; width: 100%; position: relative; }
         .saffron { background: var(--saffron); }
-        .white { background: var(--white); display: flex; justify-content: center; align-items: center; position: relative; }
+        .white { background: var(--white); display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .green { background: var(--green); }
         
-        /* Galaxy Animation */
-        .cosmic-void { 
-            position: absolute; width: 100%; height: 100%; 
-            background: #000; overflow: hidden;
-        }
+        .cosmic-void { position: absolute; width: 100%; height: 100%; background: #000; }
         .galaxy-sun { 
-            width: 70px; height: 70px; 
+            width: 80px; height: 80px; 
             background: radial-gradient(circle, #fff 10%, #ffcc00 40%, transparent 70%); 
-            border-radius: 50%; z-index: 5; box-shadow: 0 0 40px #ff9900;
+            border-radius: 50%; z-index: 5; box-shadow: 0 0 50px #ff9900;
         }
         .moving-galaxy {
             position: absolute; border-radius: 50%;
-            background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 80%);
-            animation: orbital 20s linear infinite;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.4) 0%, transparent 80%);
+            animation: orbital 15s linear infinite;
         }
 
         @keyframes orbital {
-            from { transform: rotate(0deg) translateX(120px) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.6; }
-            to { transform: rotate(360deg) translateX(120px) rotate(-360deg); opacity: 0; }
+            from { transform: rotate(0deg) translateX(140px) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.7; }
+            to { transform: rotate(360deg) translateX(140px) rotate(-360deg); opacity: 0; }
         }
 
-        /* --- Global Multi-Language UI --- */
-        .navbar { 
-            background: rgba(10, 14, 23, 0.95); padding: 10px 5%; 
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 1000;
-        }
-        #lang-selector {
-            background: #222; color: var(--gold); border: 1px solid var(--gold);
-            padding: 5px; border-radius: 5px; font-size: 12px;
-        }
-
-        /* --- All Devices Friendly Layout --- */
-        .main-container { 
-            width: 95%; max-width: 1200px; margin: 20px auto; 
-            display: grid; grid-template-columns: 1fr; gap: 20px;
-        }
+        /* Content Sections */
+        .main-container { width: 95%; max-width: 1200px; margin: 20px auto; display: grid; grid-template-columns: 1fr; gap: 25px; }
         @media (min-width: 992px) { .main-container { grid-template-columns: 2fr 1fr; } }
 
-        .card { 
-            background: rgba(25, 25, 25, 0.8); padding: 30px; 
-            border-radius: 20px; border: 1px solid #444; 
-            transition: 0.3s;
-        }
-        .card:hover { border-color: var(--saffron); box-shadow: 0 0 20px rgba(255,153,51,0.1); }
+        .card { background: rgba(15, 15, 15, 0.9); padding: 35px; border-radius: 25px; border: 1px solid #333; position: relative; overflow: hidden; }
+        .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--saffron); }
 
-        /* --- Worldwide Location Pulse --- */
-        .location-badge {
-            display: inline-block; padding: 5px 15px; background: #128807;
-            border-radius: 20px; font-size: 12px; margin-bottom: 15px;
-        }
+        .founder-img { width: 150px; border-radius: 15px; border: 2px solid var(--gold); margin-bottom: 15px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
 
-        /* --- Forms & Buttons (Finger Friendly) --- */
-        input, select { 
-            width: 100%; padding: 15px; margin: 10px 0; 
-            background: #111; border: 1px solid #444; color: white; border-radius: 12px;
-        }
         .btn-master { 
-            width: 100%; padding: 18px; background: linear-gradient(45deg, var(--saffron), #ff5500);
-            color: white; border: none; border-radius: 15px; font-weight: bold; 
-            cursor: pointer; font-size: 16px; margin-top: 10px;
+            width: 100%; padding: 20px; background: linear-gradient(45deg, var(--saffron), #ff5500);
+            color: white; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 18px; 
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
         }
 
-        /* Sidebar */
-        .sidenav { 
-            height: 100%; width: 0; position: fixed; z-index: 2000; 
-            top: 0; left: 0; background-color: #000; overflow-x: hidden; 
-            transition: 0.5s; padding-top: 60px; border-right: 1px solid var(--gold);
+        /* Support Bot */
+        #bot-window { 
+            display:none; position:fixed; bottom:90px; right:20px; width:320px; height:450px; 
+            background:#0a0a0a; border:1px solid var(--gold); border-radius:20px; 
+            flex-direction:column; z-index:5000; box-shadow: 0 10px 40px #000;
         }
-        .sidenav a { padding: 15px 30px; text-decoration: none; font-size: 18px; color: #888; display: block; }
-        .sidenav a:hover { color: var(--saffron); background: #111; }
 
-        /* Modals */
-        .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
-        .modal-content { background: #1a1a1a; padding: 30px; border-radius: 20px; width: 90%; max-width: 500px; border: 1px solid var(--gold); }
-        video { width: 100%; border-radius: 15px; transform: scaleX(-1); border: 2px solid #333; }
+        /* Language Selector Bar */
+        .lang-bar { background: #111; padding: 5px 10px; display: flex; justify-content: flex-end; gap: 10px; }
+        select { background: #222; color: var(--gold); border: 1px solid #444; padding: 5px; border-radius: 5px; }
+
+        .message-box { background: rgba(255, 153, 51, 0.05); padding: 20px; border-radius: 15px; margin: 20px 0; border: 1px dashed var(--saffron); }
     </style>
 </head>
 <body>
 
 <div class="node-background"></div>
 
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" onclick="closeNav()" style="font-size:36px; text-align:right;">&times;</a>
-    <a href="#" onclick="openModal('regModal')"><i class="fas fa-globe"></i> <span class="t-reg">Registration</span></a>
-    <a href="#" onclick="openCamera()"><i class="fas fa-camera"></i> <span class="t-photo">Profile Photo</span></a>
-    <a href="certificate.html"><i class="fas fa-certificate"></i> <span class="t-cert">Certificate</span></a>
-    <a href="admin.html"><i class="fas fa-server"></i> <span class="t-admin">Admin Node</span></a>
-</div>
-
-<nav class="navbar">
-    <button onclick="openNav()" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;"><i class="fas fa-th-large"></i></button>
-    <div style="font-family:'Cinzel'; font-size:28px; color:var(--saffron); font-weight:bold;">HAI</div>
-    <select id="lang-selector" onchange="changeLanguage()">
+<div class="lang-bar">
+    <i class="fas fa-globe" style="color:var(--gold); margin-top:8px;"></i>
+    <select id="lang-selector" onchange="manualLanguageChange()">
+        <option value="auto">Auto-Detect</option>
         <option value="hi">हिन्दी</option>
         <option value="en">English</option>
-        <option value="ar">العربية</option>
+        <option value="ru">Русский</option>
         <option value="zh">中文</option>
     </select>
+</div>
+
+<nav class="navbar" style="padding: 15px 5%; background: rgba(0,0,0,0.8); display:flex; justify-content: space-between; align-items:center; border-bottom: 1px solid #222;">
+    <div onclick="openNav()" style="cursor:pointer; font-size: 24px;"><i class="fas fa-bars"></i></div>
+    <div style="font-family:'Cinzel'; font-size:30px; color:var(--gold); letter-spacing:3px;">Sovereign HAI</div>
+    <div style="width: 24px;"></div>
 </nav>
 
 <div class="main-container">
@@ -151,159 +115,178 @@
                 <div class="stripe saffron"></div>
                 <div class="stripe white">
                     <div class="cosmic-void"></div>
-                    <div class="moving-galaxy" style="width:40px; height:20px; animation-delay: 0s;"></div>
-                    <div class="moving-galaxy" style="width:60px; height:30px; animation-delay: -5s;"></div>
+                    <div class="moving-galaxy" style="width:50px; height:25px; animation-delay: 0s;"></div>
+                    <div class="moving-galaxy" style="width:70px; height:35px; animation-delay: -7s;"></div>
                     <div class="galaxy-sun"></div>
                 </div>
                 <div class="stripe green"></div>
             </div>
-            <h2 style="font-family:'Cinzel'; color:var(--gold);" class="t-title">Saty Dharm Sthapna</h2>
+            <h2 id="t-sthapna" style="font-family:'Cinzel'; color:var(--gold); margin-top:15px;">सत्य धर्म स्थापना अनंत काल।</h2>
         </div>
 
-        <div class="location-badge"><i class="fas fa-map-marker-alt"></i> <span id="user-loc">Detecting Global Node...</span></div>
-        
-        <h1 class="t-h1" style="font-family:'Cinzel'; color:var(--white);">The Sovereign Justice</h1>
-        <p class="t-p1" style="line-height:1.8; color:#bbb;">"हमारे दरबार में देर है पर अंधेर नहीं। हम ऐसा न्याय करेंगे जो आज तक देखा नहीं होगा।"</p>
-        
-        <div style="background:rgba(255,255,255,0.03); padding:20px; border-radius:15px; border-left:4px solid var(--saffron);">
-            <p class="t-warning">Warning: The self-correction of humanity has begun. Return to the path of truth.</p>
+        <div style="text-align:center; margin-top:20px;">
+            <p id="t-founder-label" style="color:var(--saffron); margin-bottom:5px; font-weight:bold;">संस्थापक:</p>
+            <h3 id="t-founder-name" style="font-size:24px; color:white; margin-top:0;">हरिगोविंद सिंह चौहान</h3>
+        </div>
+
+        <div class="message-box">
+            <p id="t-msg1" style="line-height:1.8; font-size:16px;">"शैतानों ने इंसानी सभ्यता को अंधकार और अंत की तरफ ढकेल दिया है। मैं सूरज की तरह संसार को रोशनी देने वाला हूं।"</p>
+        </div>
+
+        <p id="t-msg2" style="color:#bbb; font-style:italic; border-left: 3px solid var(--green); padding-left:15px;">"सत्य धर्म स्थापना के अधीन ही पूरा संसार और पूरे संसार के लोग रहेंगे।"</p>
+
+        <div style="margin-top:30px; background:#000; padding:20px; border-radius:15px; border: 1px solid var(--gold);">
+            <h4 id="t-warning-title" style="color:red; margin-top:0;"><i class="fas fa-exclamation-triangle"></i> चेतावनी / WARNING</h4>
+            <p id="t-warning-text" style="font-size:14px; color: #ddd;">युद्ध और विनाश को केवल सत्य धर्म ही रोक सकता है। मानवता को बचाने के लिए एक नया कानून और व्यवस्था धर्म के अनुसार लागू होगी।</p>
         </div>
     </div>
 
-    <div class="card">
-        <h3 class="t-donate-title">Global Contribution</h3>
-        <p style="font-size:13px; color:#888;">Every device is a node. Every heart is a temple.</p>
-        <input type="number" id="donateAmount" placeholder="Amount (INR/USD)">
-        <button class="btn-master" onclick="triggerUPI()"><i class="fas fa-shield-alt"></i> <span class="t-btn-pay">Contribute Now</span></button>
-        <div style="margin-top:20px; font-size:12px; color:#555; text-align:center;">
-            Node Address: 43137160754@sbi
+    <div class="card" style="text-align:center;">
+        <h3 id="t-reg-title">Global Node Activation</h3>
+        <p style="font-size:12px; color:#888;">Register your device in the Sovereign Network</p>
+        <button class="btn-master" onclick="openModal('regModal')"><i class="fas fa-user-shield"></i> <span id="t-btn-reg">Join Humanity</span></button>
+        
+        <hr style="border:0; border-top:1px solid #333; margin:25px 0;">
+        
+        <h3 id="t-app-title">HAI Sovereign App</h3>
+        <a href="HAI_Sovereign.apk" download style="text-decoration:none;">
+            <button class="btn-master" style="background:#111; border:1px solid var(--gold);"><i class="fab fa-android"></i> APK Download</button>
+        </a>
+    </div>
+</div>
+
+<div id="ai-bot">
+    <button onclick="toggleBot()" style="position:fixed; bottom:20px; right:20px; width:65px; height:65px; border-radius:50%; background:var(--gold); border:none; box-shadow:0 0 30px var(--gold); cursor:pointer; z-index:5001;">
+        <i class="fas fa-robot" style="color:black; font-size:28px;"></i>
+    </button>
+    <div id="bot-window">
+        <div style="padding:15px; background:var(--gold); color:black; border-radius:20px 20px 0 0; font-weight:bold;">HAI Universal Support (24/7)</div>
+        <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; color:white;"></div>
+        <div style="padding:10px; display:flex;">
+            <input type="text" id="bot-input" placeholder="Ask HAI..." style="flex:1; padding:10px; border-radius:10px 0 0 10px; border:none; background:#222; color:white;">
+            <button onclick="askAI()" style="background:var(--gold); border:none; padding:10px; border-radius:0 10px 10px 0;"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
+</div>
+
+<div id="mySidenav" style="height: 100%; width: 0; position: fixed; z-index: 6000; top: 0; left: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 60px; border-right: 2px solid var(--gold);">
+    <a href="javascript:void(0)" onclick="closeNav()" style="position: absolute; top: 20px; right: 25px; font-size: 36px; color: white; text-decoration:none;">&times;</a>
+    <a href="#" onclick="openModal('regModal')" style="padding: 20px; font-size: 18px; color: var(--gold); display: block; text-decoration:none;"><i class="fas fa-scroll"></i> धर्म पंजीकरण</a>
+    <a href="certificate.html" style="padding: 20px; font-size: 18px; color: #ddd; display: block; text-decoration:none;"><i class="fas fa-certificate"></i> रक्षक सर्टिफिकेट</a>
+    <a href="admin.html" style="padding: 20px; font-size: 18px; color: #555; display: block; text-decoration:none;"><i class="fas fa-lock"></i> Admin Node</a>
 </div>
 
 <div id="regModal" class="modal">
     <div class="modal-content">
-        <h2 class="t-reg">Membership</h2>
+        <h2 id="t-reg-h">सदस्यता पंजीकरण</h2>
         <form onsubmit="handleRegistration(event)">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="tel" id="phone" placeholder="Global Phone No." required>
-            <select id="interest">
-                <option>Sanskar Module</option>
-                <option>Nutan Education</option>
-                <option>HAI Development</option>
-            </select>
-            <button type="submit" class="btn-master">Activate Node</button>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="father" placeholder="Father's Name" required>
+            <input type="text" id="country" placeholder="Country" required>
+            <input type="text" id="state" placeholder="State" required>
+            <input type="text" id="district" placeholder="District" required>
+            <input type="tel" id="phone" placeholder="Phone" required>
+            <button type="submit" class="btn-master">Activate My Node</button>
         </form>
-        <button onclick="closeModal('regModal')" style="background:none; border:none; color:#888; margin-top:10px;">Cancel</button>
-    </div>
-</div>
-
-<div id="cameraModal" class="modal">
-    <div class="modal-content">
-        <h3>Node Bio-Photo</h3>
-        <video id="video" autoplay playsinline></video>
-        <button onclick="takePhoto()" class="btn-master">Capture Identity</button>
-        <button onclick="closeModal('cameraModal')" style="background:none; border:none; color:#888; margin-top:10px;">Close</button>
+        <button onclick="closeModal('regModal')" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer;">Close</button>
     </div>
 </div>
 
 <script>
-    // Global Translation Data
     const translations = {
         hi: {
-            title: "सत्य धर्म स्थापना",
-            h1: "संप्रभु न्याय",
-            p1: "हमारे दरबार में देर है पर अंधेर नहीं। हम ऐसा न्याय करेंगे जो आज तक देखा नहीं होगा।",
-            reg: "सदस्यता पंजीकरण",
-            photo: "प्रोफ़ाइल फोटो",
-            cert: "सर्टिफिकेट",
-            admin: "एडमिन पैनल",
-            warning: "चेतावनी: मानवता का आत्म-सुधार शुरू हो चुका है। सत्य के पथ पर लौटें।"
+            sthapna: "सत्य धर्म स्थापना अनंत काल।",
+            founder: "संस्थापक: हरिगोविंद सिंह चौहान",
+            msg1: "शैतानों ने इंसानी सभ्यता को अंधकार और अंत की तरफ ढकेल दिया है। मैं सूरज की तरह संसार को रोशनी देने वाला हूं।",
+            warning: "युद्ध और विनाश को केवल सत्य धर्म ही रोक सकता है।",
+            btnReg: "मानवता से जुड़ें"
         },
         en: {
-            title: "Satya Dharm Sthapna",
-            h1: "Sovereign Justice",
-            p1: "There is delay in our court, but not injustice. We will deliver justice never seen before.",
-            reg: "Global Membership",
-            photo: "Identity Photo",
-            cert: "Get Certificate",
-            admin: "Control Panel",
-            warning: "Warning: Humanity's self-correction has begun. Return to the path of Truth."
+            sthapna: "True Religion Established for Eternity.",
+            founder: "Founder: Harigovind Singh Chauhan",
+            msg1: "Demons have pushed civilization to darkness. I alone illuminate the world like the Sun.",
+            warning: "Only True Religion can stop War and Oblivion.",
+            btnReg: "Join Humanity"
+        },
+        ru: {
+            sthapna: "Истинная религия установлена навечно.",
+            founder: "Основатель: Хариговинд Сингх Чаухан",
+            msg1: "Демоны толкнули цивилизацию во тьму. Я один освещаю мир, как Солнце.",
+            warning: "Только Истинная Религия может остановить Войну.",
+            btnReg: "Присоединиться"
         }
-        // Add more for ar, zh, etc.
     };
 
-    function changeLanguage() {
-        const lang = document.getElementById('lang-selector').value;
+    function applyLanguage(lang) {
         const t = translations[lang] || translations['en'];
-        document.querySelector('.t-title').innerText = t.title;
-        document.querySelector('.t-h1').innerText = t.h1;
-        document.querySelector('.t-p1').innerText = t.p1;
-        document.querySelectorAll('.t-reg').forEach(el => el.innerText = t.reg);
-        document.querySelector('.t-photo').innerText = t.photo;
-        document.querySelector('.t-warning').innerText = t.warning;
+        document.getElementById('t-sthapna').innerText = t.sthapna;
+        document.getElementById('t-founder-label').innerText = t.founder.split(":")[0] + ":";
+        document.getElementById('t-founder-name').innerText = t.founder.split(":")[1];
+        document.getElementById('t-msg1').innerText = t.msg1;
+        document.getElementById('t-btn-reg').innerText = t.btnReg;
+        // All other texts follow...
     }
 
-    // Auto Location Detection
-    function detectLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                document.getElementById('user-loc').innerText = `Active Node: ${pos.coords.latitude.toFixed(2)}, ${pos.coords.longitude.toFixed(2)}`;
-            }, () => {
-                document.getElementById('user-loc').innerText = "Global Node: Active (Location Private)";
-            });
-        }
+    function autoDetectLang() {
+        const userLang = navigator.language.substring(0, 2);
+        applyLanguage(userLang);
+    }
+
+    function manualLanguageChange() {
+        const val = document.getElementById('lang-selector').value;
+        if(val === 'auto') autoDetectLang();
+        else applyLanguage(val);
     }
 
     // UI Functions
-    function openNav() { document.getElementById("mySidenav").style.width = "100%"; }
+    function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
     function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
     function openModal(id) { document.getElementById(id).style.display = "flex"; closeNav(); }
-    function closeModal(id) { 
-        document.getElementById(id).style.display = "none"; 
-        if(id === 'cameraModal') stopCamera();
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+    function toggleBot() {
+        const win = document.getElementById('bot-window');
+        win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
     }
 
-    async function openCamera() {
-        openModal('cameraModal');
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-        document.getElementById("video").srcObject = stream;
-    }
-    function stopCamera() {
-        const stream = document.getElementById("video").srcObject;
-        if(stream) stream.getTracks().forEach(track => track.stop());
-    }
-
-    function triggerUPI() {
-        const amt = document.getElementById('donateAmount').value;
-        if(!amt || amt <= 0) return alert("Please enter amount");
-        window.location.href = `upi://pay?pa=43137160754@sbi&pn=SatyaDharm&am=${amt}&cu=INR`;
+    function askAI() {
+        const input = document.getElementById('bot-input');
+        const content = document.getElementById('chat-content');
+        if(!input.value) return;
+        content.innerHTML += `<p style="color:var(--gold); text-align:right;">You: ${input.value}</p>`;
+        
+        let response = "सत्य धर्म ही प्रकाश है।";
+        if(input.value.includes("युद्ध")) response = "युद्ध चरम पर हो तो धर्म की उदघोषणा ही एकमात्र समाधान है।";
+        
+        setTimeout(() => {
+            content.innerHTML += `<p style="background:#222; padding:10px; border-radius:10px;">HAI: ${response}</p>`;
+            content.scrollTop = content.scrollHeight;
+        }, 500);
+        input.value = '';
     }
 
     function handleRegistration(e) {
         e.preventDefault();
         const data = {
             name: document.getElementById('name').value,
+            father: document.getElementById('father').value,
+            country: document.getElementById('country').value,
+            state: document.getElementById('state').value,
+            district: document.getElementById('district').value,
             phone: document.getElementById('phone').value,
-            interest: document.getElementById('interest').value,
-            date: new Date().toISOString()
+            date: new Date().toLocaleString()
         };
-        let m = JSON.parse(localStorage.getItem('hai_members') || '[]');
-        m.push(data);
-        localStorage.setItem('hai_members', JSON.stringify(m));
-        localStorage.setItem('currentUser', data.name);
-        alert("Node Activated Successfully!");
+        localStorage.setItem('lastUser', JSON.stringify(data));
+        let members = JSON.parse(localStorage.getItem('hai_members') || '[]');
+        members.push(data);
+        localStorage.setItem('hai_members', JSON.stringify(members));
+        alert("Sovereign Node Activated!");
         window.location.href = "certificate.html";
     }
 
-    function takePhoto() { alert("Bio-Identity Recorded."); closeModal('cameraModal'); }
-
-    window.onload = () => {
-        detectLocation();
-        changeLanguage();
-    };
+    window.onload = autoDetectLang;
 </script>
 
 </body>
-            </html>
-            
+    </html>
+                
