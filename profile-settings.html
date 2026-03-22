@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Settings - HAI</title>
+    <style>
+        body { background: #05070a; color: white; text-align: center; font-family: sans-serif; padding: 20px; }
+        .box { max-width: 400px; margin: auto; background: #111; padding: 20px; border-radius: 20px; border: 1px solid #D4AF37; }
+        video, canvas { width: 100%; border-radius: 10px; display: none; margin-top: 10px; }
+        .btn { padding: 12px; margin: 5px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 45%; }
+        #preview { width: 150px; height: 150px; border-radius: 50%; border: 2px solid #D4AF37; object-fit: cover; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>प्रोफ़ाइल सेटिंग</h2>
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+        <img id="preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+        
+        <div>
+            <button class="btn" style="background:#444;" onclick="startCam('user')">Front</button>
+            <button class="btn" style="background:#444;" onclick="startCam('environment')">Back</button>
+            <button class="btn" style="background:#D4AF37;" onclick="snap()">Capture</button>
+            <button class="btn" style="background:#128807;" onclick="document.getElementById('f').click()">Gallery</button>
+            <input type="file" id="f" hidden accept="image/*" onchange="load(event)">
+        </div>
+        <button class="btn" style="width:100%; background:white; color:black; margin-top:15px;" onclick="save()">Save Profile</button>
+    </div>
+
+    <script>
+        let v = document.getElementById('video');
+        let c = document.getElementById('canvas');
+        let p = document.getElementById('preview');
+
+        async function startCam(m) { v.style.display='block'; v.srcObject = await navigator.mediaDevices.getUserMedia({video:{facingMode:m}}); }
+        function snap() { c.width=v.videoWidth; c.height=v.videoHeight; c.getContext('2d').drawImage(v,0,0); p.src=c.toDataURL(); v.style.display='none'; }
+        function load(e) { let r=new FileReader(); r.onload=()=>p.src=r.result; r.readAsDataURL(e.target.files[0]); }
+        function save() { localStorage.setItem('user_photo', p.src); alert("Saved!"); window.location.href='index.html'; }
+    </script>
+</body>
+</html>
+
