@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Registration - Satya Dharm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #D4AF37; --bg: #05070a; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .reg-container { width: 90%; max-width: 450px; background: rgba(15,15,15,0.95); padding: 30px; border-radius: 25px; border: 1px solid var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.2); text-align: center; }
+        h2 { color: var(--gold); margin-bottom: 20px; font-family: 'Cinzel', serif; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; box-sizing: border-box; text-align: center; }
+        .btn-reg { width: 100%; padding: 15px; background: linear-gradient(45deg, var(--gold), #aa8a2e); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; color: #000; margin-top: 15px; }
+        .btn-reg:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--gold); }
+    </style>
+</head>
+<body>
+    <div class="reg-container">
+        <h2><i class="fas fa-user-plus"></i> वैश्विक पंजीकरण</h2>
+        <p style="font-size: 13px; color: #888;">सत्य धर्म स्थापना के वैश्विक नोड से जुड़ें</p>
+        
+        <input type="text" id="name" placeholder="आपका पूरा नाम (Full Name)">
+        <input type="text" id="father" placeholder="पिता का नाम (Father's Name)">
+        <input type="text" id="address" placeholder="पूरा पता (Address)">
+        <input type="number" id="pin" placeholder="पिन कोड (PIN)">
+        <input type="number" id="mobile" placeholder="मोबाइल नंबर (Mobile)">
+        <input type="email" id="email" placeholder="ईमेल आईडी (Optional)">
+        
+        <button class="btn-reg" onclick="processRegistration()">पंजीकरण पूर्ण करें और सर्टिफिकेट लें</button>
+        <p onclick="location.href='index.html'" style="cursor:pointer; font-size:12px; margin-top:15px; color:var(--gold);">← होम पेज पर वापस जाएँ</p>
+    </div>
+
+    <script>
+        function processRegistration() {
+            const uData = {
+                name: document.getElementById('name').value,
+                father: document.getElementById('father').value,
+                address: document.getElementById('address').value,
+                pin: document.getElementById('pin').value,
+                mobile: document.getElementById('mobile').value,
+                email: document.getElementById('email').value || 'N/A'
+            };
+
+            if(!uData.name || !uData.mobile) {
+                alert("कृपया कम से कम नाम और मोबाइल नंबर अवश्य भरें।");
+                return;
+            }
+
+            // डेटा को ब्राउज़र की मेमोरी में सुरक्षित करना
+            localStorage.setItem('currentUser', JSON.stringify(uData));
+            // सर्टिफिकेट पेज पर भेजना
+            window.location.href = 'certificate.html';
+        }
+    </script>
+</body>
+</html>
