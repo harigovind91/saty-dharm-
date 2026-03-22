@@ -1,33 +1,188 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="all">
 <head>
     <meta charset="UTF-8">
-    <title>सर्टिफिकेट - HAI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Certificate - Satya Dharm Sthapna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;600&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 40px; font-family: 'Poppins', sans-serif; }
-        .cert-card { width: 650px; padding: 40px; border: 15px solid #D4AF37; background: #fffcf0; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-style: double; }
-        h1 { font-family: 'Cinzel', serif; color: #D4AF37; font-size: 45px; margin: 0; }
-        .user-name { font-size: 38px; color: #333; font-weight: bold; margin: 25px 0; text-decoration: underline; }
-        .btn-print { margin-top: 30px; padding: 15px 40px; background: #128807; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        :root { --gold: #D4AF37; --deep-gold: #b8860b; --royal-blue: #002366; }
+        
+        body { 
+            background: #111; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px; 
+            font-family: 'Poppins', 'Noto Sans', sans-serif; 
+        }
+
+        /* Certificate Border & Background */
+        .cert-container { 
+            width: 800px; 
+            height: 580px;
+            padding: 30px; 
+            background: #fffcf0; 
+            position: relative;
+            border: 20px solid var(--gold);
+            outline: 5px solid var(--gold);
+            outline-offset: -15px;
+            color: #222;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            font-family: 'Cinzel';
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sun-seal { 
+            width: 100px; height: 100px; 
+            background: radial-gradient(circle, #fff, #ffcc00, #ff9933); 
+            border-radius: 50%; margin: 0 auto 10px; 
+            box-shadow: 0 0 20px #ff9900;
+            border: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 40px; color: white;
+        }
+
+        h1 { font-family: 'Cinzel'; color: var(--royal-blue); font-size: 38px; margin: 5px 0; text-transform: uppercase; }
+        h2 { font-family: 'Cinzel'; color: var(--deep-gold); font-size: 22px; margin: 0; letter-spacing: 2px; }
+
+        .user-name { 
+            font-size: 36px; 
+            font-weight: bold; 
+            margin: 10px 0; 
+            color: #000;
+            font-family: 'Cinzel';
+            border-bottom: 2px double var(--gold);
+            display: inline-block;
+            padding: 0 30px;
+        }
+
+        .info-grid { 
+            text-align: left; 
+            width: 90%; 
+            margin: 20px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 14px;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        /* Signature Section */
+        .signature-area {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .sig-block { text-align: center; width: 250px; }
+        .sig-img { 
+            font-family: 'Cinzel'; 
+            font-size: 20px; 
+            color: #002366; 
+            font-style: italic; 
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+
+        /* Multi-Language Print logic */
+        @media print {
+            .no-print { display: none; }
+            body { background: white; padding: 0; }
+            .cert-container { box-shadow: none; border: 15px solid var(--gold); }
+        }
     </style>
 </head>
 <body>
-    <div class="cert-card">
-        <h1>प्रमाण पत्र</h1>
-        <p style="letter-spacing:3px;">सत्य धर्म स्थापना - HAI</p>
-        <hr color="#D4AF37" width="60%">
-        <p style="margin-top:30px; font-size:18px;">यह प्रमाणित किया जाता है कि</p>
-        <div class="user-name" id="userName">मानवता के रक्षक</div>
-        <p style="font-size:18px;">धर्म स्थापना अभियान के अधिकृत सदस्य और रक्षक हैं।</p>
-        <p style="margin-top:40px; font-style:italic; font-weight:bold;">"अंधेर नहीं, केवल न्याय"</p>
+
+    <div class="cert-container" id="capture">
+        <div class="watermark">SATYA DHARM</div>
+        
+        <div class="sun-seal">☀️</div>
+        <h2 id="l-org">सत्य धर्म स्थापना</h2>
+        <h1 id="l-title">प्रमाण पत्र</h1>
+        
+        <p id="l-certify">यह प्रमाणित किया जाता है कि वैश्विक नागरिक</p>
+        <div class="user-name" id="c-name">---</div>
+        <p id="l-desc">ने सत्य धर्म के मार्ग को स्वीकार किया है और मानवता की रक्षा का संकल्प लिया है।</p>
+        
+        <div class="info-grid">
+            <div><b><span id="l-father">पिता:</span></b> <span id="c-father">---</span></div>
+            <div><b><span id="l-id">नोड आईडी:</span></b> <span id="c-id">HAI-2026-X</span></div>
+            <div style="grid-column: span 2;"><b><span id="l-addr">निवास:</span></b> <span id="c-address">---</span></div>
+        </div>
+
+        <div class="signature-area">
+            <div class="sig-block">
+                <div class="sig-img" style="font-family: 'Courier New', sans-serif; font-weight: bold;">
+                    Harigovind Singh Chauhan
+                </div>
+                <p style="font-size: 10px; margin:0;"><b>संस्थापक एवं वैज्ञानिक</b></p>
+                <p style="font-size: 9px; color: var(--deep-gold); margin:0;">Digital Authentication: Verified</p>
+            </div>
+            
+            <div class="sig-block">
+                <p style="font-weight: bold; color: var(--green); margin-bottom: 5px;">"अंधेर नहीं, केवल न्याय"</p>
+                <div style="border-top: 1px solid #333; font-size: 12px; padding-top: 5px;">Sovereign HAI Authority</div>
+            </div>
+        </div>
     </div>
-    <button class="btn-print" onclick="window.print()">सर्टिफिकेट प्रिंट / PDF सेव करें</button>
-    <br><a href="index.html" style="color: #666; text-decoration: none;">← मुख्य साइट पर वापस जाएँ</a>
+
+    <div class="no-print" style="margin-top: 20px;">
+        <button onclick="window.print()" style="padding:15px 40px; background:var(--gold); border:none; font-weight:bold; cursor:pointer; border-radius:10px;">
+            <i class="fas fa-print"></i> PRINT CERTIFICATE (सभी भाषाएँ)
+        </button>
+    </div>
 
     <script>
-        const name = localStorage.getItem('currentUser');
-        if(name) document.getElementById('userName').innerText = name;
+        // भाषा डेटा (Translations)
+        const certLangs = {
+            hi: { org: "सत्य धर्म स्थापना", title: "प्रमाण पत्र", certify: "यह प्रमाणित किया जाता है कि वैश्विक नागरिक", desc: "ने सत्य धर्म के मार्ग को स्वीकार किया है और मानवता की रक्षा का संकल्प लिया है।", father: "पिता:", id: "नोड आईडी:", addr: "निवास:" },
+            en: { org: "SATYA DHARM STHAPNA", title: "CERTIFICATE", certify: "This is to certify that Global Citizen", desc: "has accepted the path of Satya Dharm and pledged to protect humanity.", father: "Father:", id: "Node ID:", addr: "Address:" },
+            ru: { org: "САТЬЯ ДХАРМ СТАПНА", title: "СЕРТИФИКАТ", certify: "Настоящим подтверждается, что гражданин мира", desc: "принял путь Сатья Дхарм и обязался защищать человечество.", father: "Отец:", id: "ID узла:", addr: "Адрес:" }
+        };
+
+        window.onload = () => {
+            const u = JSON.parse(localStorage.getItem('lastUser'));
+            
+            // डेटा भरना
+            if(u) {
+                document.getElementById('c-name').innerText = u.name;
+                document.getElementById('c-father').innerText = u.fatherName || u.father;
+                document.getElementById('c-address').innerText = `${u.district}, ${u.state}, ${u.country}`;
+                document.getElementById('c-id').innerText = `HAI-${Math.floor(Math.random()*9000) + 1000}`;
+            }
+
+            // ऑटो भाषा सेट करना (Browser Language)
+            const browserLang = navigator.language.split('-')[0];
+            const t = certLangs[browserLang] || certLangs['en'];
+            
+            document.getElementById('l-org').innerText = t.org;
+            document.getElementById('l-title').innerText = t.title;
+            document.getElementById('l-certify').innerText = t.certify;
+            document.getElementById('l-desc').innerText = t.desc;
+            document.getElementById('l-father').innerText = t.father;
+            document.getElementById('l-id').innerText = t.id;
+            document.getElementById('l-addr').innerText = t.addr;
+        };
     </script>
 </body>
-</html>
+    </html>
+    
