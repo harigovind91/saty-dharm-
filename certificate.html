@@ -9,42 +9,49 @@
         body { background: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; font-family: 'serif'; }
         
         .cert-box { 
-            width: 850px; padding: 50px; background: #fffcf0; 
-            border: 20px solid var(--gold); position: relative; 
+            width: 800px; height: 550px; padding: 40px; background: #fffcf0; 
+            border: 15px solid var(--gold); position: relative; 
             box-shadow: 0 0 50px rgba(0,0,0,0.5); color: #222;
+            background-image: radial-gradient(circle, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
         .photo-area { 
-            width: 130px; height: 160px; border: 3px solid var(--gold); 
-            position: absolute; top: 50px; right: 50px; overflow: hidden; background: #eee;
+            width: 120px; height: 140px; border: 3px solid var(--gold); 
+            position: absolute; top: 40px; right: 40px; overflow: hidden; background: #eee;
         }
         .photo-area img { width: 100%; height: 100%; object-fit: cover; }
 
-        .header h1 { color: var(--blue); font-size: 45px; margin: 0; }
-        .header h2 { color: #b8860b; letter-spacing: 8px; margin: 5px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding: 0 50px; }
+        .header h1 { color: var(--blue); font-size: 38px; margin: 0; text-transform: uppercase; }
+        .header h2 { color: #b8860b; letter-spacing: 5px; margin: 10px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding: 0 30px; font-size: 22px; }
 
-        .content { margin-top: 30px; text-align: left; font-size: 18px; line-height: 1.8; }
-        .data-line { border-bottom: 1px dotted #888; font-weight: bold; color: #000; padding: 0 10px; }
+        .content { margin-top: 25px; text-align: left; font-size: 17px; line-height: 1.6; }
+        .data-line { border-bottom: 1px solid #444; font-weight: bold; color: #000; padding: 0 5px; font-family: sans-serif; }
 
-        .footer { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .seal { font-size: 60px; filter: grayscale(1) opacity(0.2); position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); }
+        .footer { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .seal { font-size: 80px; position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); opacity: 0.1; }
 
-        .btn-group { margin-top: 20px; display: flex; gap: 10px; }
-        .btn { padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; }
+        .btn-group { margin-top: 20px; display: flex; gap: 15px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; color: white; font-size: 16px; transition: 0.3s; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
 
-        @media print { .btn-group { display: none; } body { background: none; padding: 0; } .cert-box { box-shadow: none; border: 10px solid var(--gold); } }
+        @media print { 
+            .btn-group { display: none; } 
+            body { background: none; padding: 0; } 
+            .cert-box { box-shadow: none; border: 10px solid var(--gold); margin: 0; } 
+        }
     </style>
 </head>
 <body>
 
-    <div class="cert-box" id="capture">
+    <div class="cert-box">
         <div class="photo-area"><img id="u-photo" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"></div>
         <div class="seal">☀️</div>
         
         <div class="header" style="text-align: center;">
-            <div style="font-size: 40px;">☀️</div>
+            <div style="font-size: 40px; color: var(--gold);">☀️</div>
             <h1>सत्य धर्म स्थापना</h1>
-            <p style="margin:0; font-weight:bold;">SATYA DHARM STHAPNA - GLOBAL NODE</p>
+            <p style="margin:2px; font-weight:bold; letter-spacing: 1px;">SATYA DHARM STHAPNA - GLOBAL NODE</p>
             <h2>प्रमाण पत्र / CERTIFICATE</h2>
         </div>
 
@@ -52,33 +59,34 @@
             <p>यह प्रमाणित किया जाता है कि / This is to certify that:</p>
             <p>नाम / Name: <span class="data-line" id="v-name">----------</span></p>
             <p>पिता का नाम / Father's Name: <span class="data-line" id="v-father">----------</span></p>
-            <p>पता / Address: <span class="data-line" id="v-address">----------</span>, PIN: <span class="data-line" id="v-pin">------</span></p>
-            <p>संपर्क / Contact: <span class="data-line" id="v-mobile">----------</span> | Email: <span class="data-line" id="v-email">----------</span></p>
+            <p>पता / Address: <span class="data-line" id="v-address">----------</span>, पिन / PIN: <span class="data-line" id="v-pin">------</span></p>
+            <p>संपर्क / Contact: <span class="data-line" id="v-mobile">----------</span> | ईमेल / Email: <span class="data-line" id="v-email">----------</span></p>
             
-            <p style="text-align: center; margin-top: 20px; font-style: italic;">
+            <p style="text-align: center; margin-top: 15px; font-style: italic; font-weight: 500;">
                 "इन्होंने मानवता की रक्षा और सत्य धर्म के वैश्विक मार्ग को स्वीकार किया है।" <br>
-                "Has accepted the path of Global Humanity and Satya Dharm."
+                <small>"Has accepted the path of Global Humanity and Satya Dharm."</small>
             </p>
         </div>
 
         <div class="footer">
-            <div style="text-align: left;">
-                <p>Node ID: <b>HAI-2026-<span id="v-id"></span></b></p>
-                <p>Date: <b id="v-date"></b></p>
+            <div style="text-align: left; font-size: 14px;">
+                <p>Node ID: <b>HAI-2026-<span id="v-id">XXXX</span></b></p>
+                <p>जारी तिथि / Date: <b id="v-date">00/00/0000</b></p>
             </div>
-            <div style="text-align: center; border-top: 1px solid #000; padding-top: 5px;">
-                <p><b>हरिगोविंद सिंह चौहान</b><br><small>Founder & Scientist</small></p>
+            <div style="text-align: center; border-top: 2px solid #000; padding-top: 5px; min-width: 200px;">
+                <p><b>हरिगोविंद सिंह चौहान</b><br><small>Founder & Scientist, HAI</small></p>
             </div>
         </div>
     </div>
 
     <div class="btn-group">
-        <button class="btn" style="background: #D4AF37;" onclick="window.print()">Print / Download PDF</button>
-        <button class="btn" style="background: #444;" onclick="location.href='index.html'">Back to Home</button>
+        <button class="btn" style="background: #D4AF37; box-shadow: 0 4px 15px rgba(212,175,55,0.4);" onclick="window.print()"><i class="fas fa-print"></i> प्रिंट / PDF डाउनलोड करें</button>
+        <button class="btn" style="background: #444;" onclick="location.href='index.html'"><i class="fas fa-home"></i> होम पेज</button>
     </div>
 
     <script>
         window.onload = () => {
+            // localStorage से यूजर डेटा प्राप्त करना
             const data = JSON.parse(localStorage.getItem('currentUser'));
             const photo = localStorage.getItem('user_photo');
 
@@ -89,12 +97,21 @@
                 document.getElementById('v-pin').innerText = data.pin;
                 document.getElementById('v-mobile').innerText = data.mobile;
                 document.getElementById('v-email').innerText = data.email;
-                document.getElementById('v-id').innerText = data.mobile.substring(6); // मोबाइल के आखिरी 4 अंक ID के लिए
-                document.getElementById('v-date').innerText = new Date().toLocaleDateString();
+                
+                // मोबाइल के आखिरी 4 अंक लेकर Node ID बनाना
+                const lastFour = data.mobile.toString().slice(-4);
+                document.getElementById('v-id').innerText = lastFour;
+                
+                // आज की तारीख डालना
+                document.getElementById('v-date').innerText = new Date().toLocaleDateString('hi-IN');
+            } else {
+                alert("कोई डेटा नहीं मिला। कृपया पहले पंजीकरण करें।");
+                window.location.href = 'registration.html';
             }
+            
+            // यदि यूजर की फोटो पहले से सेव है
             if(photo) document.getElementById('u-photo').src = photo;
         };
     </script>
 </body>
-    </html>
-            
+</html>
